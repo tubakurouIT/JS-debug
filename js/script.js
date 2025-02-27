@@ -5,20 +5,22 @@ $(function () {
   });
 
   trials = 0;
+  let runs = 0;
   ran = Math.round(Math.random() * 9);
+
 
   $('.jquery-form [name=input-number]').change(function () {
 
     // 試行回数
     trials++;
-    $('.trials').html(trial);
+    $('.trials').html(trials);
 
     const VAL_NUMBER = $(this).val();
     let val = Number(VAL_NUMBER) || 0; // NaNのとき0にする
-    const RESULT = Math.abs(val - run); //数字がどのぐらい離れているか
+    const RESULT = Math.abs(val - runs); //数字がどのぐらい離れているか
 
     //判定処理
-    if (val > 0 || val < 9) {
+    if (val < 0 || val > 9) {
       $('.result-text').html("範囲内で入力してね！");
     } else if (RESULT == 0) {
       $('.result-text').html("正解!");
